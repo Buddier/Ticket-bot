@@ -8,9 +8,10 @@ If you find an error or need support, go to my discord server and open a ticket 
 
 # Installation
 You need to have Node.JS 17+
-```git clone https://github.com/Expectatives/Ticket-bot.git
+``git clone https://github.com/Expectatives/Ticket-bot.git
 cd Ticket-bot
-npm i```
+npm i
+``
 
 # Steps on how to run this project
 * Step 1: Go to [Discord Developer Portal> My Applications](https://discord.com/developers/applications)
