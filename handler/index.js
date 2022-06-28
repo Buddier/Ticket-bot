@@ -85,41 +85,7 @@ const loadSlashCommands = async function (client) {
 
     client.on("ready", async() => {
         const guild = client.guilds.cache.get(client.config.guildID);
-        await guild.commands.set(slash).then((cmd) => {
-            const getRoles = (commandName) => {
-                const permissions = slash.find(x => x.name == commandName).userPerms;
-
-                if (!permissions) return null;
-                return guild.roles.cache.filter(x => x.permissions.has(permissions) && !x.managed).first(10);
-            }
-
-            const fullPermissions = cmd.reduce((accumulator, x) => {
-                const roles = getRoles(x.name);
-
-                if (!roles) return accumulator;
-
-                const permissions = roles.reduce((a, v) => {
-                    return [
-                        ...a,
-                        {
-                            id: v.id,
-                            type: "ROLE",
-                            permission: true,
-                        }
-                    ]
-                }, []);
-
-                return [
-                    ...accumulator,
-                    {
-                        id: x.id,
-                        permissions
-                    }
-                ]
-            }, []);
-
-            guild.commands.permissions.set({ fullPermissions });
-        });
+        await guild.commands.set(slash);
     });
 }
 
